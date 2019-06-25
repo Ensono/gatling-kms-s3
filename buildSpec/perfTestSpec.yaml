@@ -1,0 +1,17 @@
+version: 0.2
+phases:
+  pre_build:
+    commands:
+    - ENV_NAME=${ENVIRONMENT_NAME:=ci}
+    - BUCKET_NAME=idam-${ENV_NAME}-report-s3-bucket
+  build:
+    commands:
+    - echo Running tests ...
+    - mvn clean gatling:test -Denv=${ENV_NAME}
+    finally:
+    - echo Deploy to S3 ...
+    - rm -rf gatling
+    - bash folder_rename.sh
+    - mv target/gatling gatling
+    - bash create-report-index.sh
+    - aws s3 cp gatling s3://$BUCKET_NAME/gatling --recursive
