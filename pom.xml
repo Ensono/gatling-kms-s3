@@ -13,7 +13,7 @@
 		<gatling.version>3.0.0</gatling.version>
 		<gatling-plugin.version>3.0.0</gatling-plugin.version>
 		<scala-maven-plugin.version>3.4.4</scala-maven-plugin.version>
-		<aws-ssm.version>1.11.500</aws-ssm.version>
+		<aws-ssm.version>1.11.983</aws-ssm.version>
 		<scala.version>2.12.8</scala.version>
 	</properties>
 
